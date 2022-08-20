@@ -1,13 +1,15 @@
 import React from 'react';
-import AppRouter from "../../router";
 import AppHeader from '../../components/AppHeader'
 import AppMusicPlayer from '../../components/AppMusicPlayer'
+import AppView from '../../components/AppView'
+import style from './style.module.less'
+
 const Index = () => {
     return (
-        <div>
-            <AppHeader />
-            <AppRouter />
-            <AppMusicPlayer />
+        <div className={style.app_layout}>
+            <AppHeader/>
+            <AppView/>
+            <AppMusicPlayer/>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import style from './style.module.less'
 
 const Index = () => {
     return (
-        <div style={style.appHeader}>
+        <div className={style.app_header}>
             个人推荐
         </div>
     );
