@@ -3,7 +3,7 @@ import request from './axios.config'
 //搜索歌曲
 export function searchByKeyword(keyword) {
     return request.send({
-        url: `cloudsearch?keywords=${keyword}&type=1`
+        url: `/cloudsearch?keywords=${keyword}&type=1`
     })
 }
 
@@ -22,7 +22,6 @@ export function getPlayListDetail(id) {
 }
 
 //获取歌单所有歌曲 playlist/track/all
-
 export function  getPlayListTrackAll(id){
     return request.send({
         url: `/playlist/track/all?id=${id}`
