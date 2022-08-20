@@ -1,15 +1,15 @@
 import {createRoot} from 'react-dom/client'
-import AppLayout from './views/layout'
 import {Provider} from 'react-redux'
+import AppRouter from "./router";
 import   { store, persistor } from './redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import './styles/common.css'
-
+import 'antd/dist/antd.min.css'
 let root = createRoot(document.getElementById('root'))
 root.render(
     <Provider store={store} >
         <PersistGate loading={null} persistor={persistor}>
-            <AppLayout />
+            <AppRouter />
         </PersistGate>
     </Provider>
 )
