@@ -1,14 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './style.module.less'
 import {connect} from 'react-redux'
 import audioPlayer from "../AudioPlayer";
-
 import { FastBackwardOutlined, FastForwardOutlined ,ClockCircleOutlined} from '@ant-design/icons';
+import ActionSheet from '../ActionSheet'
+import HistoryList from '../HistoryList'
 
 const Index = (props) => {
     useEffect(()=>{
         console.log(props)
     },[])
+
+    const [showAC,setShowAC]=useState(false)
     //点击播放按钮的处理
     const handleChangeStatus=()=>{
         if(props.isPlay){
@@ -55,6 +58,9 @@ const Index = (props) => {
 
     return (
         <div className={style.app_music_player}>
+            <ActionSheet show={showAC} onMaskClick={()=>setShowAC(false)} >
+                   <HistoryList />
+            </ActionSheet>
             <img className={style.app_music_player_cover} src={props.playingInfo.id?props.playingInfo.musicCover:require('../../assets/images/none.png')}/>
             <div className={style.app_music_player_controls}>
                 <FastBackwardOutlined onClick={goPrev} className={style.app_music_player_icon} />
@@ -62,7 +68,7 @@ const Index = (props) => {
                 <FastForwardOutlined onClick={goNext} className={style.app_music_player_icon} />
             </div>
 
-            <ClockCircleOutlined   className={style.app_music_player_list} />
+            <ClockCircleOutlined onClick={()=>setShowAC(true)} className={style.app_music_player_list} />
 
 
         </div>
