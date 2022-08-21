@@ -1,8 +1,7 @@
-import {Map} from 'immutable'
-const state=Map({
+const state={
     playlist:[],
     playingInfo:{},
-    isPlay:{}
-})
+    isPlay:false
+}
 
 export default state
