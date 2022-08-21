@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {createRoot} from 'react-dom/client'
 import {getSongUrl} from "../../api/api";
 import ReactDom from "react-dom";
+import {store} from "../../redux";
 //
 // const Index = () => {
 //     const sourceRef = useRef()
@@ -55,8 +56,33 @@ class Index extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        console.log('audioPlayer挂载完成！并将store传入了组件，为所欲为！', this.props.store.getState().app_reducer)
+        //处理自动播放下一首
+        let that=this
+        that.audioRef.current.addEventListener("ended",async function fn() {   //当播放完一首歌曲时也会触发
+            let current =  that.props.store.getState().app_reducer.playingInfo
+            let list = that.props.store.getState().app_reducer.playlist
+            //找到刚播放完的音乐在list中位置
+            let index= list.findIndex(v=>v.id==current.id)
+            //如果是最后一首，停止播放
+            if(index==list.length-1){
+                that.props.store.dispatch({
+                    type:'set_play_status',
+                    payload:false
+                })
+            }else{
+                let next=list[index+1]
+                that.props.store.dispatch({
+                    type:'set_playing_info',
+                    payload:next
+                })
+
+                await that.playMusic(next.id)
+            }
+        });
     }
+
+
 
     render() {
         return (
@@ -83,7 +109,7 @@ const audioPlayer={
         if(!div){
            div =document.createElement('div')
             div.id='wjyyds-audio-player'
-            createRoot(div).render(<Index ref={ref} />)
+            createRoot(div).render(<Index ref={ref} store={store} />)
             document.body.appendChild(div)
 
         }
