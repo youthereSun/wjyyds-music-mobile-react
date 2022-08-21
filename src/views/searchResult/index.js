@@ -5,6 +5,8 @@ import Playlist from "../../components/Playlist";
 import { PlayCircleOutlined } from '@ant-design/icons';
 import audioPlayer from "../../components/AudioPlayer";
 import {connect} from "react-redux";
+import AnimateLoading from "../../components/AnimateLoading";
+
 
 const Index = (props) => {
     const params = useParams()
@@ -13,9 +15,12 @@ const Index = (props) => {
         handleSearch(keyword)
     }, [])
     const [songs, setSongs] = useState([])
+    const [showLoading ,setShowLoading]=useState(false)
 
     const handleSearch = async (keyword) => {
+        setShowLoading(true)
         let res = await searchByKeyword(keyword)
+        setShowLoading(false)
         setSongs(res.result.songs)
     }
 
@@ -39,6 +44,7 @@ const Index = (props) => {
 
     return (
         <div>
+            <AnimateLoading show={showLoading} />
             <div onClick={addAlbumToList} style={{display:"flex",padding:'20px',alignItems:'center'}}>
                 <PlayCircleOutlined style={{fontWeight:'bold',fontSize:"20px",color:'#009688'}} />
                 <div style={{fontWeight:'bold',fontSize:"18px",padding:'10px',color:'#009688'}}>播放全部</div>
