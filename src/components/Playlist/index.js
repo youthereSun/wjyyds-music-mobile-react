@@ -13,7 +13,6 @@ const Index = (props) => {
         const singer = music?.ar[0]?.name
         const res = await checkSongValidity(id)
         //如果当前播放的就是点击的，不作处理
-        debugger
         if (res.success && props.playingInfo.id!=id) {
             //更新当前播放信息
             const payload =  {musicName, musicCover, singer, id}
@@ -35,15 +34,14 @@ const Index = (props) => {
                     <div onClick={()=>playMusic(v)}  key={v.id} className={style.app_playlist_item}>
                         <div className={style.app_playlist_item_index} >{i+1}</div>
                         <div className={style.app_playlist_item_info}>
-                            <p>{v.name}</p>
-                            <p>{v.ar[0].name}</p>
+                            <div >{v.name}</div>
+                            <div style={{color:'#009688',fontSize:'12px'}}>{v.ar[0].name}</div>
                         </div>
                     </div>
                 )
             })}
-
         </div>
-    );
+    )
 };
 
 const mapDispatchToProps={
