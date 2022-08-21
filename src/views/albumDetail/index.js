@@ -5,6 +5,8 @@ import style from './style.module.less'
 import Playlist from '../../components/Playlist'
 import {connect} from 'react-redux'
 import audioPlayer from "../../components/AudioPlayer";
+import AnimateLoading from "../../components/AnimateLoading";
+
 
 const Index = (props) => {
     const {id} = useParams()
@@ -12,11 +14,13 @@ const Index = (props) => {
         fetchAlbumInfo(id)
         fetchPlaylist(id)
     }, [])
-
+    const [showLoading ,setShowLoading]=useState(false)
     const [albumInfo, setAlbumInfo] = useState({})
     const [albumPlaylist, setAlbumPlaylist] = useState([])
     const fetchAlbumInfo = async (id) => {
+        setShowLoading(true)
         let {playlist: {coverImgUrl, description, name}} = await getPlayListDetail(id)
+        //setShowLoading(false)
         setAlbumInfo({
             coverImgUrl,
             description,
@@ -25,7 +29,9 @@ const Index = (props) => {
     }
 
     const fetchPlaylist = async (id) => {
+        setShowLoading(true)
         let {songs} = await getPlayListTrackAll(id)
+        setShowLoading(false)
         setAlbumPlaylist(songs)
     }
 
@@ -48,6 +54,7 @@ const Index = (props) => {
 
     return (
         <div className={style.app_album_info}>
+            <AnimateLoading show={showLoading}/>
             <div className={style.app_album_info_block}>
                 <div style={{display: "flex", height: "150px"}}>
                     <img onClick={addAlbumToList} className={style.app_album_play_all}
