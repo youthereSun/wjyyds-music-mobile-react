@@ -2,6 +2,7 @@ import React from 'react';
 import './style.less'
 import {createRoot} from 'react-dom/client'
 import { ThunderboltFilled} from '@ant-design/icons';
+import QueueAnim from 'rc-queue-anim'
 
 
 // const Index = () => {
@@ -57,6 +58,9 @@ class Index extends React.Component {
     render() {
         return (
             <div className={'wjyyds-toast-message'}>
+                <QueueAnim
+                    type={['right', 'left']}
+                    ease={['easeOutQuart', 'easeInOutQuart']}>
                 {
                     this.state.messages.map(v => {
                         return (
@@ -66,7 +70,7 @@ class Index extends React.Component {
                         )
                     })
                 }
-
+                </QueueAnim>
             </div>
         );
     }
@@ -83,7 +87,7 @@ let container;
 let toastRef = React.createRef()
 const toastMessage = {
     show: (option) => {
-        let id = new Date().getTime()
+        let id = new Date().getTime()+Math.round(Math.random()*1000);
         option = {...defaultOption, ...option, id}
         if (!container) {
             container = document.createElement('div')
