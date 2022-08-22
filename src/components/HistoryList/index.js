@@ -20,6 +20,7 @@ const Index = (props) => {
     }
     return (
         <div className={'app-history-list'}>
+            {props.playlist.length==0&&<div className={'no-history'}>暂无播放列表</div>}
             {props.playlist.map((v,i)=>{
                 return (
                     <div onClick={(e)=>playMusic(v,e)} key={v.id} className={"app_playlist_item"}>

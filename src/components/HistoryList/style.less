@@ -1,23 +1,32 @@
 
-.app-history-list{
+.app-history-list {
   max-height: 60vh;
-  background: rgba(139, 195, 74, 0.43);
-  padding: 0px 10px;
+  backdrop-filter: blur(10px);
+  background: #eeeeee;
   overflow: scroll;
+  border-radius: 10px 10px 0px 0px;
+  .no-history{
+    height: 80px;
+    width: 100vw;
+    font-size: 20px;
+    text-align: center;
+    line-height: 80px;
+    color: #009688;
+  }
 
   .app_playlist_item {
     width: 100vw;
     display: flex;
     border-bottom: 1px rgba(184, 184, 184, 0.15) solid;
 
-.active_item{
-  font-weight: bold;
-  color:red;
-  width: 50px;
-  font-size: 30px;
-  text-align: center;
-  font-style: italic;
-}
+    .active_item {
+      font-weight: bold;
+      color: red;
+      width: 50px;
+      font-size: 30px;
+      text-align: center;
+      font-style: italic;
+    }
 
     .app_playlist_item_index {
       width: 50px;
@@ -30,5 +39,6 @@
         align-content: center;
         align-items: center;
       }
-    }}
+    }
+  }
 }
