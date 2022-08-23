@@ -6,7 +6,6 @@ const useWindowsWidth = (threshold) => {
 
     let checkScreenSize = () => {
         setIsScreenSmall(window.innerWidth < threshold);
-        debugger
     };
     useEffect(() => {
         checkScreenSize();

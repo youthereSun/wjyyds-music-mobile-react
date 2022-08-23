@@ -15,6 +15,7 @@ const Home = () => {
     useEffect(() => {
         setAppTitle('主页')
         getPersonalAlbums()
+
     }, [])
 
     useLazyLoad(albums)
