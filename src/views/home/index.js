@@ -13,7 +13,7 @@ const Home = () => {
     const [albums, setAlbums] = useState([])
     const [showLoading ,setShowLoading]=useState(false)
     useEffect(() => {
-        setAppTitle('主页')
+        //setAppTitle('主页')
         getPersonalAlbums()
 
     }, [])

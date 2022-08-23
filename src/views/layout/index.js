@@ -12,7 +12,7 @@ const Index = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const [keyword, setKeyword] = useState('许嵩')
-    const [appTitle,setAppTitle] =useState('')
+    const [appTitle,setAppTitle] =useState('个人推荐')
 
     // useEffect(()=>{
     //     if(windowsWidth){

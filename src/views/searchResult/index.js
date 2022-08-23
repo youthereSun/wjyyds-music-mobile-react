@@ -18,7 +18,7 @@ const Index = (props) => {
     useEffect(() => {
         const {keyword} = params
         handleSearch(keyword)
-        setAppTitle('搜索')
+        //setAppTitle('搜索')
 
     }, [])
     const [songs, setSongs] = useState([])

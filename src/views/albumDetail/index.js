@@ -12,7 +12,7 @@ const Index = (props) => {
     const {setAppTitle} =useContext(globalContext)
     const {id} = useParams()
     useEffect(() => {
-        setAppTitle('歌单详情')
+        //setAppTitle('歌单详情')
         fetchAlbumInfo(id)
         fetchPlaylist(id)
     }, [])
