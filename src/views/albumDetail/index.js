@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useContext} from 'react';
 import {useParams} from 'react-router-dom'
 import {getPlayListDetail, getPlayListTrackAll} from '../../api/api'
 import style from './style.module.less'
@@ -6,11 +6,13 @@ import Playlist from '../../components/Playlist'
 import {connect} from 'react-redux'
 import audioPlayer from "../../components/AudioPlayer";
 import AnimateLoading from "../../components/AnimateLoading";
-
+import globalContext from "../../utils/globalContext";
 
 const Index = (props) => {
+    const {setAppTitle} =useContext(globalContext)
     const {id} = useParams()
     useEffect(() => {
+        setAppTitle('歌单详情')
         fetchAlbumInfo(id)
         fetchPlaylist(id)
     }, [])

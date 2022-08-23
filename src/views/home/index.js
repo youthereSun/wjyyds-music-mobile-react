@@ -1,15 +1,18 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState,useContext} from 'react';
 import {getPersonalized} from '../../api/api'
 import AlbumList from '../../components/AlbumList'
 import {useNavigate} from 'react-router-dom'
 import AnimateLoading from "../../components/AnimateLoading";
+import globalContext from "../../utils/globalContext";
 
 const Home = () => {
+    const {setAppTitle} =useContext(globalContext)
     const pageRef=useRef()
     const navigate =useNavigate()
     const [albums, setAlbums] = useState([])
     const [showLoading ,setShowLoading]=useState(false)
     useEffect(() => {
+        setAppTitle('主页')
         getPersonalAlbums()
     }, [])
 

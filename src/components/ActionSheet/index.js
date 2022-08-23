@@ -7,7 +7,7 @@ const Index = (props) => {
     const [visible,setVisible] =useState(false)
     useEffect(()=>{
        if(props.show){
-           setAnimate('animate__bounceInDown')
+           setAnimate('animate__bounceInUp')
            setVisible(true)
        }else {
            setAnimate('animate__bounceOutDown')

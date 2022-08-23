@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useContext} from 'react';
 import {useParams} from 'react-router-dom'
 import {searchByKeyword} from '../../api/api'
 import Playlist from "../../components/Playlist";
@@ -6,13 +6,17 @@ import { PlayCircleOutlined } from '@ant-design/icons';
 import audioPlayer from "../../components/AudioPlayer";
 import {connect} from "react-redux";
 import AnimateLoading from "../../components/AnimateLoading";
+import GlobalContext from '../../utils/globalContext'
 
 
 const Index = (props) => {
+    const {setAppTitle}=useContext(GlobalContext)
+
     const params = useParams()
     useEffect(() => {
         const {keyword} = params
         handleSearch(keyword)
+        setAppTitle('搜索')
     }, [])
     const [songs, setSongs] = useState([])
     const [showLoading ,setShowLoading]=useState(false)
