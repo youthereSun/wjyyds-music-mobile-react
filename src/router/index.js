@@ -18,11 +18,7 @@ const AppRouter = () => {
             <Routes>
                 <Route path={'/'} element={<Navigate to="/home" replace />}></Route>
                 {/*<Route path={'/'} element={<Redirect to="/home"/>}></Route>*/}
-                <Route path={'/home'} element={<Suspense fallback={<>loading...</>}>
-                    <Auth>
-                        <Layout/>
-                    </Auth>
-                </Suspense>}>
+                <Route path={'/home'} element={lazyRoute('layout',true)}>
                     {/*index 默认渲染*/}
                     <Route index element={<Navigate to={'personal'} />}/>
                     <Route path={'personal'} element={<Suspense fallback={<>loading...</>}>
