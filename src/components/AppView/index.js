@@ -1,6 +1,7 @@
 import React,{lazy,Suspense} from 'react';
 import {Route,Routes} from 'react-router-dom'
 import style from './style.module.less'
+import Auth from "../../utils/auth";
 
 const Home=lazy(()=>import('../../views/home'))
 const SearchResult =lazy(()=>import('../../views/searchResult'))
@@ -10,9 +11,12 @@ const Index = () => {
     const ChildRoutes=()=>(
         <Routes>
             <Route path={'/'}  element={<Suspense fallback={<div>loading...</div>}>
-                <Home/>
+               <Auth>
+                   <Home/>
+               </Auth>
             </Suspense>} />
-            <Route path={'/search/:keyword'}  element={<Suspense fallback={<div>loading...</div>}>
+            {/*动态路由*/}
+            <Route path={'/search/:keyword'}   element={<Suspense fallback={<div>loading...</div>}>
                 <SearchResult/>
             </Suspense>} />
             <Route path={'/detail/:id'}  element={<Suspense fallback={<div>loading...</div>}>

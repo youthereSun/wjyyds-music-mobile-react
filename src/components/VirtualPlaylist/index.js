@@ -25,6 +25,7 @@ const Index = (props) => {
        }
 
         return ()=>{
+
            if(listRef.current){
                listRef.current.removeEventListener('scroll', scrollHandler)
            }

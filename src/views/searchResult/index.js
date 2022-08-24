@@ -69,8 +69,6 @@ const Index = (props) => {
         }
     }
 
-
-
     return (
         <div style={{overflow:'hidden'}}>
             <AnimateLoading show={showLoading} />
@@ -80,7 +78,7 @@ const Index = (props) => {
             </div>
            <div  style={{overflow:"hidden",height:'calc(100vh - 210px)'}}>
                {/*<Playlist list={songs}/>*/}
-               <VirtualList itemHeight={80} list={songs}>
+               <VirtualList itemHeight={60} list={songs}>
                    {
                        ({offsetTop,itemHeight,v,i})=>{
                            return (
