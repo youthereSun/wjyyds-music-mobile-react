@@ -2,6 +2,7 @@ import {Route, Routes, HashRouter as Router, Navigate} from 'react-router-dom'
 import React, {lazy, Suspense} from 'react'
 import Auth from "../utils/auth";
 import Redirect from "../utils/redirect";
+import lazyRoute from '../utils/lazyRoute'
 
 const Layout = lazy(() => import('../views/layout'))
 const Login = lazy(() => import('../views/login'))

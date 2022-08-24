@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom'
+import './style.less'
 
 const Index = () => {
     const navigate =useNavigate()
@@ -9,10 +10,16 @@ const Index = () => {
         navigate('/')
     }
     return (
-        <div>
-            login
-            <button onClick={setToken}>login</button>
-        </div>
+       <div className={'login-container'} onClick={()=>setToken()}>
+           <div className="spinner-box">
+               <div className="configure-border-1">
+                   <div className="configure-core"></div>
+               </div>
+               <div className="configure-border-2">
+                   <div className="configure-core"></div>
+               </div>
+           </div>
+       </div>
     );
 };
 
