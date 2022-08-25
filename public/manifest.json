@@ -1,10 +1,6 @@
 {
-  "short_name": "网抑云",
-  "name": "网抑云音乐",
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#20232a",
-  "background_color": "#20232a",
+  "short_name": "网易云",
+  "name": "网易云音乐",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,6 +17,9 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
-
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
