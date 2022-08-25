@@ -8,7 +8,6 @@ import useLazyLoad from "../../hooks/useLazyLoad";
 
 const Home = () => {
     const {setAppTitle} =useContext(globalContext)
-    const pageRef=useRef()
     const navigate =useNavigate()
     const [albums, setAlbums] = useState([])
     const [showLoading ,setShowLoading]=useState(false)
@@ -56,7 +55,7 @@ const Home = () => {
         navigate(`/home/detail/${id}`)
     }
     return (
-        <div ref={pageRef} >
+        <div className={'app-personal-home'}>
             <AnimateLoading show={showLoading} />
             <AlbumList  albumClickHandle={handleAlbumClick} albums={albums}/>
         </div>

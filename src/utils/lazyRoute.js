@@ -1,8 +1,14 @@
-import React, {lazy, Suspense} from 'react'
+import React, {lazy, Suspense, useEffect} from 'react'
 import Auth from "./auth";
 import Transition from "./transition";
+import {connect} from 'react-redux'
 
-const LazyRoute = ({path, auth, animate}) => {
+const LazyRoute = ({setAppTitle,path, auth, animate,title}) => {
+
+    useEffect(()=>{
+        //通过redux修改apptitle
+        setAppTitle(title)
+    },[title])
     const Component = lazy(() => import(`../views/${path}`))
     return (
         <Suspense fallback={<>loading...</>}>
@@ -24,5 +30,13 @@ const LazyRoute = ({path, auth, animate}) => {
         </Suspense>
     )
 }
+const mapDispatchToProps={
+    setAppTitle:(payload)=>{
+        return {
+            type:'set_app_title',
+            payload
+        }
+    }
+}
 
-export default LazyRoute
+export default connect(null,mapDispatchToProps) (LazyRoute)

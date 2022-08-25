@@ -5,9 +5,8 @@ const Transition = (props) => {
 
     const [animate, setAnimate] = useState('animate__bounceInLeft')
 
-
     return (
-        <div className={`animate__animated ${animate}`}>
+        <div style={{height:'100%'}} className={`animate__animated ${animate}`}>
             {props.children}
         </div>
     );

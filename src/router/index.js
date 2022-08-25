@@ -21,17 +21,15 @@ const AppRouter = () => {
                 <Route path={'/home'} element={<LazyRoute path={'layout'} auth={true} />}>
                     {/*index 默认渲染*/}
                     <Route index element={<Navigate to={'personal'} />}/>
-                    <Route path={'personal'} element={<Suspense fallback={<>loading...</>}>
-                        <Home/>
-                    </Suspense>}/>
+                    <Route path={'personal'} element={<LazyRoute path={'home'} auth={true} animate={true} title={'推荐歌单'} />}/>
                     {/*相对路径，省略父级，动态路由 多个参数：【search/:keyword/:id/:name】  */}
-                    <Route path={'search/:keyword'} element={<Suspense fallback={<>loading...</>}>
-                        <SearchResult/>
-                    </Suspense>}/>
+                    <Route path={'search/:keyword'} element={<LazyRoute path={'searchResult'} auth={true} animate={true} title={'搜索'} />}/>
                     {/*绝对路径*/}
-                    <Route path={'/home/detail/:id'} element={<Suspense fallback={<>loading...</>}>
-                        <AlbumDetail/>
-                    </Suspense>}/>
+                    {/*<Route path={'/home/detail/:id'} element={<Suspense fallback={<>loading...</>}>*/}
+                    {/*    <AlbumDetail/>*/}
+                    {/*</Suspense>}/>*/}
+                    {/*懒加载方式 */}
+                    <Route path={'/home/detail/:id'} element={<LazyRoute path={'albumDetail'} auth={true} animate={true} title={"歌单详情"} />}/>
                 </Route>
                 <Route path={'/login'} element={<Suspense fallback={<>loading...</>}>
                     <Login/>

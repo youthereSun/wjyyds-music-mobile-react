@@ -1,7 +1,8 @@
 const state={
     playlist:[],
     playingInfo:{},
-    isPlay:false
+    isPlay:false,
+    appTitle:''
 }
 
 export default state

@@ -12,7 +12,7 @@ const Index = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const [keyword, setKeyword] = useState('许嵩')
-    const [appTitle,setAppTitle] =useState('个人推荐')
+    const [appTitle,setAppTitle] =useState('')
 
     // useEffect(()=>{
     //     if(windowsWidth){
@@ -35,9 +35,10 @@ const Index = () => {
     }
 
     return (
+        //context 会引发重新渲染，不适合此处
         <GlobalContext.Provider value={{appTitle,setAppTitle}}>
             <div className={style.app_layout}>
-                <AppHeader appTitle={appTitle} keyword={keyword} submitKeyword={submitKeywordHandler}/>
+                <AppHeader  keyword={keyword} submitKeyword={submitKeywordHandler}/>
                 <AppView/>
                 <AppMusicPlayer/>
             </div>

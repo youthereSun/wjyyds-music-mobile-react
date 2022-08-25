@@ -4,6 +4,7 @@ import { Input } from 'antd';
 import toastMessage from "../ToastMessage";
 import Texty from 'rc-texty';
 import 'rc-texty/assets/index.css';
+import {connect} from 'react-redux'
 const Index = (props) => {
     const keyPressHandler=(e)=>{
         if(e.which==13 && e.target.value){
@@ -97,4 +98,19 @@ const Index = (props) => {
     );
 };
 
-export default Index;
+const mapDispatchToProps={
+    setAppTitle:(payload)=>{
+        return {
+            type:'set_app_title',
+            payload
+        }
+    }
+}
+
+const mapStateToProps=(state)=>{
+    return {
+        appTitle:state.app_reducer.appTitle
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (Index);
