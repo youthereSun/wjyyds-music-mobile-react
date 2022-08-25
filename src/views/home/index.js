@@ -3,6 +3,7 @@ import {getPersonalized} from '../../api/api'
 import AlbumList from '../../components/AlbumList'
 import {useNavigate} from 'react-router-dom'
 import AnimateLoading from "../../components/AnimateLoading";
+import PortalAnimateLoading from '../../components/PortalAnimateLoading'
 import globalContext from "../../utils/globalContext";
 import useLazyLoad from "../../hooks/useLazyLoad";
 
@@ -56,7 +57,7 @@ const Home = () => {
     }
     return (
         <div className={'app-personal-home'}>
-            <AnimateLoading show={showLoading} />
+            {showLoading&&<PortalAnimateLoading />}
             <AlbumList  albumClickHandle={handleAlbumClick} albums={albums}/>
         </div>
     );
