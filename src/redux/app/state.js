@@ -2,7 +2,8 @@ const state={
     playlist:[],
     playingInfo:{},
     isPlay:false,
-    appTitle:''
+    appTitle:'',
+    appPersonalList:[]
 }
 
 export default state

@@ -5,6 +5,8 @@ const reducer =(prevState= state,action)=>{
     switch (action.type) {
         case 'set_app_title':
             return newState.set('appTitle',action.payload).toJS()
+        case 'set-personal-list':
+            return newState.set('appPersonalList',action.payload).toJS()
         case 'set_playlist':
             return newState.set('playlist',action.payload).toJS()
         case 'set_play_status':

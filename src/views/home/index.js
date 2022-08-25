@@ -1,24 +1,24 @@
 import React, {useEffect, useRef, useState,useContext} from 'react';
-import {getPersonalized} from '../../api/api'
 import AlbumList from '../../components/AlbumList'
 import {useNavigate} from 'react-router-dom'
 import AnimateLoading from "../../components/AnimateLoading";
 import PortalAnimateLoading from '../../components/PortalAnimateLoading'
 import globalContext from "../../utils/globalContext";
 import useLazyLoad from "../../hooks/useLazyLoad";
+import {fetchPersonalList} from '../../redux/app/asyncActions'
+import {connect} from "react-redux";
 
-const Home = () => {
+const Home = (props) => {
     const {setAppTitle} =useContext(globalContext)
     const navigate =useNavigate()
-    const [albums, setAlbums] = useState([])
     const [showLoading ,setShowLoading]=useState(false)
     useEffect(() => {
-        //setAppTitle('主页')
-        getPersonalAlbums()
-
+        if(props.albumList.length==0){
+            getPersonalAlbums()
+        }
     }, [])
 
-    useLazyLoad(albums)
+    useLazyLoad(props.albumList)
 
     //处理图片懒加载，废弃了，通过hooks处理了
     // const initLazyLoad =()=>{
@@ -46,10 +46,8 @@ const Home = () => {
 
     const getPersonalAlbums = async () => {
         setShowLoading(true)
-        const {result} = await getPersonalized()
+        await props.fetchPersonalList()
         setShowLoading(false)
-        setAlbums(result)
-        //setTimeout(()=>{initLazyLoad()},0)
     }
 
     const handleAlbumClick=(id)=>{
@@ -58,9 +56,20 @@ const Home = () => {
     return (
         <div className={'app-personal-home'}>
             {showLoading&&<PortalAnimateLoading />}
-            <AlbumList  albumClickHandle={handleAlbumClick} albums={albums}/>
+            <AlbumList  albumClickHandle={handleAlbumClick} albums={props.albumList}/>
         </div>
     );
 };
 
-export default Home;
+const mapDispatchToProps={
+    fetchPersonalList,
+}
+
+const mapStateToProps=(state)=>{
+    return {
+        albumList:state.app_reducer.appPersonalList
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home) ;

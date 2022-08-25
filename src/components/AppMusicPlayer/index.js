@@ -9,7 +9,7 @@ import toastMessage from "../ToastMessage";
 
 const Index = (props) => {
     useEffect(() => {
-        console.log(props)
+        //console.log(props)
     }, [])
 
     const [showAC, setShowAC] = useState(false)
