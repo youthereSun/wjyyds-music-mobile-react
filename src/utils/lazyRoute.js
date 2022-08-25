@@ -1,18 +1,28 @@
 import React, {lazy, Suspense} from 'react'
 import Auth from "./auth";
+import Transition from "./transition";
 
-const lazyRoute = (path, auth) => {
+const LazyRoute = ({path, auth, animate}) => {
     const Component = lazy(() => import(`../views/${path}`))
     return (
         <Suspense fallback={<>loading...</>}>
             {
-                auth ? <Auth>
-                    <Component/>
-                </Auth> : <Component/>
-            }
+                auth ?
+                    <Auth>
+                        {
+                            animate ? <Transition>
+                                <Component/>
+                            </Transition> : <Component/>
+                        }
+                    </Auth> :
 
+                        animate? <Transition>
+                            <Component/>
+                        </Transition> : <Component/>
+
+            }
         </Suspense>
     )
 }
 
-export default lazyRoute
+export default LazyRoute

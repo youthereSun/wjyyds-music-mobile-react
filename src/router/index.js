@@ -2,9 +2,9 @@ import {Route, Routes, HashRouter as Router, Navigate} from 'react-router-dom'
 import React, {lazy, Suspense} from 'react'
 import Auth from "../utils/auth";
 import Redirect from "../utils/redirect";
-import lazyRoute from '../utils/lazyRoute'
+import LazyRoute from '../utils/lazyRoute'
 
-const Layout = lazy(() => import('../views/layout'))
+//const Layout = lazy(() => import('../views/layout'))
 const Login = lazy(() => import('../views/login'))
 const NotFound = lazy(() => import('../views/notFound'))
 
@@ -18,7 +18,7 @@ const AppRouter = () => {
             <Routes>
                 <Route path={'/'} element={<Navigate to="/home" replace />}></Route>
                 {/*<Route path={'/'} element={<Redirect to="/home"/>}></Route>*/}
-                <Route path={'/home'} element={lazyRoute('layout',true)}>
+                <Route path={'/home'} element={<LazyRoute path={'layout'} auth={true} />}>
                     {/*index 默认渲染*/}
                     <Route index element={<Navigate to={'personal'} />}/>
                     <Route path={'personal'} element={<Suspense fallback={<>loading...</>}>

@@ -20,7 +20,7 @@ const Index = (props) => {
         handleSearch(keyword)
         //setAppTitle('搜索')
 
-    }, [])
+    }, [params])
     const [songs, setSongs] = useState([])
     const [showLoading ,setShowLoading]=useState(false)
 

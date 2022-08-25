@@ -22,9 +22,12 @@ const Index = () => {
     //     }
     // },[windowsWidth])
 
+
+
     const submitKeywordHandler = (val) => {
         setKeyword(val)
         if (location.pathname.includes('search')) {
+            //当navigate到当前页面时，useEffect需要添加依赖才会变化，如果依赖为[],就不会走useEffect中的方法
             navigate(`/home/search/${val}`, {replace: true})
         } else {
             navigate(`/home/search/${val}`)
