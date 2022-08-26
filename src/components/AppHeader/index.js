@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from './style.module.less'
 import { Input } from 'antd';
 import toastMessage from "../ToastMessage";
@@ -6,6 +6,8 @@ import Texty from 'rc-texty';
 import 'rc-texty/assets/index.css';
 import {connect} from 'react-redux'
 const Index = (props) => {
+
+    const [enableDark,setEnableDark] =useState(false)
     const keyPressHandler=(e)=>{
         if(e.which==13 && e.target.value){
             props.submitKeyword(e.target.value)
@@ -13,10 +15,16 @@ const Index = (props) => {
     }
 
     const showAppInfo=()=>{
-        toastMessage.show({
-            text:'技术：react18，redux react-router-dom6 ant-motion',
-            delay:4000
-        })
+        if(enableDark){
+            document.getElementById('root').classList.remove('dark-mode')
+        }else {
+            document.getElementById('root').classList.add('dark-mode')
+        }
+        setEnableDark(!enableDark)
+        // toastMessage.show({
+        //     text:'技术：react18，redux react-router-dom6 ant-motion',
+        //     delay:4000
+        // })
     }
 
    const getEnter = (e) => {

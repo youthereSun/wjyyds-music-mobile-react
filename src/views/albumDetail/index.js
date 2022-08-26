@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import audioPlayer from "../../components/AudioPlayer";
 import AnimateLoading from "../../components/AnimateLoading";
 import globalContext from "../../utils/globalContext";
+import toastMessage from "../../components/ToastMessage";
 
 const Index = (props) => {
     const {setAppTitle} =useContext(globalContext)
@@ -54,6 +55,13 @@ const Index = (props) => {
         audioPlayer.play(newList[0].id)
     }
 
+    const showAlbumDetail=(des)=>{
+        toastMessage.show({
+            text:des,
+            autoClose:false
+        })
+    }
+
     return (
         <div className={style.app_album_info}>
             <AnimateLoading show={showLoading}/>
@@ -69,7 +77,7 @@ const Index = (props) => {
                         justifyContent: "space-between"
                     }}>
                         <p className={style.app_album_name}>{albumInfo.name}</p>
-                        <p className={style.app_album_name}>{albumInfo.description && albumInfo.description.substr(0, 10)}...</p>
+                        <p onClick={()=>showAlbumDetail(albumInfo.description)} className={style.app_album_name}>{albumInfo.description && albumInfo.description.substr(0, 10)}...</p>
                     </div>
                 </div>
             </div>

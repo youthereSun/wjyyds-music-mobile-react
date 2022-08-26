@@ -5,7 +5,9 @@ import   { store, persistor } from './redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import './styles/common.css'
 import 'antd/dist/antd.min.css'
+import './styles/dark.less'
 let root = createRoot(document.getElementById('root'))
+
 root.render(
     <Provider store={store} >
         <PersistGate loading={null} persistor={persistor}>
