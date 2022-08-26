@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {createPortal} from 'react-dom'
 import 'animate.css'
 import './style.less'
 
@@ -18,12 +19,12 @@ const Index = (props) => {
     },[props.show])
 
     return (
-        visible && (<div onClick={props.onMaskClick} className={`wjyyds-action-sheet animate__animated ${animate} animate__faster`}>
+        visible && (createPortal(<div onClick={props.onMaskClick} className={`wjyyds-action-sheet animate__animated ${animate} animate__faster`}>
                 <div className={'wjyyds-action-sheet-content'}>
                     {props.children}
                 </div>
 
-            </div>
+            </div>,document.body)
         )
     )
 };

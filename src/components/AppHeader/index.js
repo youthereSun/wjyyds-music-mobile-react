@@ -5,6 +5,9 @@ import toastMessage from "../ToastMessage";
 import Texty from 'rc-texty';
 import 'rc-texty/assets/index.css';
 import {connect} from 'react-redux'
+
+
+let  themeDom=document.querySelector('meta[name="themecolor"]')
 const Index = (props) => {
 
     const [enableDark,setEnableDark] =useState(false)
@@ -17,8 +20,10 @@ const Index = (props) => {
     const showAppInfo=()=>{
         if(enableDark){
             document.getElementById('root').classList.remove('dark-mode')
+            themeDom.setAttribute('content','#ffffff')
         }else {
             document.getElementById('root').classList.add('dark-mode')
+            themeDom.setAttribute('content','#000000')
         }
         setEnableDark(!enableDark)
         // toastMessage.show({

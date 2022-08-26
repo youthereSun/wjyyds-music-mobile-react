@@ -31,7 +31,7 @@ const Index = (props) => {
         <div className={style.app_playlist}>
             {props.list.map((v,i)=>{
                 return (
-                    <div onClick={()=>playMusic(v)}  key={v.id} className={style.app_playlist_item}>
+                    <div onClick={()=>playMusic(v)}  key={v.id} className={`${style.app_playlist_item} ${props.playingInfo.id==v.id?style.app_current_play:''}`}>
                         <div className={style.app_playlist_item_index} >{i+1}</div>
                         <div className={style.app_playlist_item_info}>
                             <div >{v.name}</div>

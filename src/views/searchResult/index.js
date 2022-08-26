@@ -76,23 +76,23 @@ const Index = (props) => {
                 <div style={{fontWeight:'bold',fontSize:"18px",padding:'10px',color:'#009688'}}>播放全部</div>
                 <PlayCircleOutlined style={{fontWeight:'bold',fontSize:"20px",color:'#009688'}} />
             </div>
-           <div  style={{overflow:"hidden",height:'calc(100vh - 210px)'}}>
-               {/*<Playlist list={songs}/>*/}
-               <VirtualList itemHeight={60} list={songs}>
-                   {
-                       ({offsetTop,itemHeight,v,i})=>{
-                           return (
-                               <div onClick={()=>playMusic(v)} className={style.app_virtual_playlist_item} >
-                                   <div className={style.app_playlist_item_index} >{Math.floor(offsetTop/itemHeight)+i+1}</div>
-                                   <div className={style.app_playlist_item_info}>
-                                       <div >{v.name}</div>
-                                       <div style={{color:'#009688',fontSize:'12px'}}>{v.ar[0].name}</div>
-                                   </div>
-                               </div>
-                           )
-                       }
-                   }
-               </VirtualList>
+           <div  style={{overflow:"scroll",height:'calc(100vh - 210px)'}}>
+               <Playlist list={songs}/>
+               {/*<VirtualList itemHeight={60} list={songs}>*/}
+               {/*    {*/}
+               {/*        ({offsetTop,itemHeight,v,i})=>{*/}
+               {/*            return (*/}
+               {/*                <div onClick={()=>playMusic(v)} className={style.app_virtual_playlist_item} >*/}
+               {/*                    <div className={style.app_playlist_item_index} >{Math.floor(offsetTop/itemHeight)+i+1}</div>*/}
+               {/*                    <div className={style.app_playlist_item_info}>*/}
+               {/*                        <div >{v.name}</div>*/}
+               {/*                        <div style={{color:'#009688',fontSize:'12px'}}>{v.ar[0].name}</div>*/}
+               {/*                    </div>*/}
+               {/*                </div>*/}
+               {/*            )*/}
+               {/*        }*/}
+               {/*    }*/}
+               {/*</VirtualList>*/}
            </div>
         </div>
     )
