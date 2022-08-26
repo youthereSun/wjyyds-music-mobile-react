@@ -7,7 +7,7 @@ import 'rc-texty/assets/index.css';
 import {connect} from 'react-redux'
 
 
-let  themeDom=document.querySelector('meta[name="themecolor"]')
+let  themeDom=document.querySelector('meta[name="theme-color"]')
 const Index = (props) => {
 
     const [enableDark,setEnableDark] =useState(false)
