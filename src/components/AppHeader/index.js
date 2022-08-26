@@ -20,7 +20,7 @@ const Index = (props) => {
     const showAppInfo=()=>{
         if(enableDark){
             document.getElementById('root').classList.remove('dark-mode')
-            themeDom.setAttribute('content','#ffffff')
+            themeDom.setAttribute('content','#fafafa')
         }else {
             document.getElementById('root').classList.add('dark-mode')
             themeDom.setAttribute('content','#000000')
